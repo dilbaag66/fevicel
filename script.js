@@ -171,3 +171,84 @@ style.textContent = `
   .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 `;
 document.head.appendChild(style);
+
+// ─── ADHESIVE VARIANT SWIPER ───
+document.querySelectorAll('.adhesive-swiper').forEach(swiper => {
+  const slides = Array.from(swiper.querySelectorAll('.swiper-slide-inner'));
+  const dots   = Array.from(swiper.querySelectorAll('.sdot'));
+  const prevBtn = swiper.querySelector('.swiper-prev');
+  const nextBtn = swiper.querySelector('.swiper-next');
+  const AUTO_DELAY = 3500;
+
+  // Wrap slides in a flex track
+  const track = document.createElement('div');
+  track.className = 'swiper-track';
+  slides.forEach(s => track.appendChild(s));
+  swiper.insertBefore(track, swiper.firstChild);
+
+  // Add progress bar
+  const progressBar = document.createElement('div');
+  progressBar.className = 'swiper-progress';
+  swiper.appendChild(progressBar);
+
+  let current = 0;
+  let total = slides.length;
+  let autoTimer = null;
+  let progressAnim = null;
+
+  function goTo(idx, resetProgress = true) {
+    current = (idx + total) % total;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    if (resetProgress) startProgress();
+  }
+
+  function startProgress() {
+    clearInterval(autoTimer);
+    cancelAnimationFrame(progressAnim);
+    progressBar.style.transition = 'none';
+    progressBar.style.width = '0%';
+    // Trigger reflow
+    void progressBar.offsetWidth;
+    progressBar.style.transition = `width ${AUTO_DELAY}ms linear`;
+    progressBar.style.width = '100%';
+    autoTimer = setTimeout(() => {
+      goTo(current + 1);
+    }, AUTO_DELAY);
+  }
+
+  // Arrow clicks
+  prevBtn && prevBtn.addEventListener('click', () => goTo(current - 1));
+  nextBtn && nextBtn.addEventListener('click', () => goTo(current + 1));
+
+  // Dot clicks
+  dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+
+  // Touch / drag swipe
+  let startX = 0, isDragging = false;
+  swiper.addEventListener('mousedown', e => { startX = e.clientX; isDragging = true; });
+  swiper.addEventListener('touchstart', e => { startX = e.touches[0].clientX; isDragging = true; }, { passive: true });
+  swiper.addEventListener('mouseup', e => {
+    if (!isDragging) return;
+    isDragging = false;
+    const diff = startX - e.clientX;
+    if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+  });
+  swiper.addEventListener('touchend', e => {
+    if (!isDragging) return;
+    isDragging = false;
+    const diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+  });
+  swiper.addEventListener('mouseleave', () => { isDragging = false; });
+
+  // Pause on hover
+  swiper.addEventListener('mouseenter', () => {
+    clearTimeout(autoTimer);
+    progressBar.style.transition = 'none';
+  });
+  swiper.addEventListener('mouseleave', () => startProgress());
+
+  // Init
+  goTo(0);
+});
