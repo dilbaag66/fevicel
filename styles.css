@@ -1290,3 +1290,17 @@ ul { list-style: none; }
   .cert-banner { gap: 12px; }
   .contact-form-wrapper { padding: 28px 20px; }
 }
+
+/* Bullet list for product descriptions */
+.bullet-list {
+  text-align: left;
+  padding-left: 20px;
+  margin-bottom: 24px;
+  list-style-type: disc;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.bullet-list li {
+  margin-bottom: 6px;
+}
