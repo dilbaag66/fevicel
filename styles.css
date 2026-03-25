@@ -1,8 +1,8 @@
 /* ─── DESIGN TOKENS ─── */
 :root {
-  --primary: #FDB813;
-  --primary-light: #FFC736;
-  --primary-dark: #D49504;
+  --primary: #E8420A;
+  --primary-light: #FF5A20;
+  --primary-dark: #C23308;
   --dark: #0D0D0D;
   --dark-2: #161616;
   --dark-3: #1E1E1E;
@@ -14,7 +14,7 @@
   --text-secondary: #ABABAB;
   --text-muted: #666;
   --accent-gold: #D4AA47;
-  --gradient-hero: linear-gradient(135deg, #0D0D0D 0%, #1A1700 50%, #2D2700 100%);
+  --gradient-hero: linear-gradient(135deg, #0D0D0D 0%, #1A0800 50%, #2D0E00 100%);
   --gradient-brand: linear-gradient(135deg, var(--primary) 0%, var(--accent-gold) 100%);
   --font-heading: 'Outfit', sans-serif;
   --font-body: 'Inter', sans-serif;
@@ -22,7 +22,7 @@
   --radius-sm: 8px;
   --radius-lg: 24px;
   --shadow: 0 4px 24px rgba(0,0,0,0.4);
-  --shadow-glow: 0 0 40px rgba(253,184,19,0.2);
+  --shadow-glow: 0 0 40px rgba(232,66,10,0.2);
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -596,7 +596,7 @@ ul { list-style: none; }
 .use-tag {
   padding: 6px 14px;
   background: rgba(232,66,10,0.08);
-  border: 1px solid rgba(253,184,19,0.2);
+  border: 1px solid rgba(232,66,10,0.2);
   border-radius: 100px;
   font-size: 0.78rem;
   color: var(--primary-light);
