@@ -523,7 +523,7 @@ ul { list-style: none; }
 .product-card-inner {
   padding: 40px;
   display: grid;
-  grid-template-columns: 1fr 320px;
+  grid-template-columns: 1fr;
   gap: 40px;
   align-items: center;
 }
@@ -1314,4 +1314,23 @@ ul { list-style: none; }
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+}
+
+.product-card-visual {
+  margin: 24px auto;
+  text-align: center;
+  width: 100%;
+  max-width: 450px; /* limits width so image doesn't get huge */
+}
+
+/* Swiper inside visual */
+.adhesive-swiper {
+  margin: 0 auto;
+}
+
+.product-image {
+  max-height: 280px;
+  object-fit: contain;
+  margin: 0 auto 16px;
+  display: block;
 }

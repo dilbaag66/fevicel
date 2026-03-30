@@ -1,0 +1,23 @@
+{
+  "name": "fevicel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dilbaag66/fevicel.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dilbaag66/fevicel/issues"
+  },
+  "homepage": "https://github.com/dilbaag66/fevicel#readme",
+  "dependencies": {
+    "cheerio": "^1.2.0"
+  }
+}
