@@ -76,27 +76,44 @@ filterBtns.forEach(btn => {
   });
 });
 
-// ─── CONTACT FORM SUBMIT ───
+// ─── CONTACT FORM SUBMIT (WHATSAPP) ───
 const form = document.getElementById('contactForm');
 const submitBtn = document.getElementById('submitBtn');
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  submitBtn.textContent = 'Sending...';
-  submitBtn.disabled = true;
+  
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const phone = document.getElementById('phone').value;
+  const subject = document.getElementById('subject').value;
+  const message = document.getElementById('message').value;
 
+  const whatsappNumber = "918872419354";
+  
+  let text = `Hello JSM Group,
+
+`;
+  text += `*Name:* ${name}
+`;
+  if (email) text += `*Email:* ${email}
+`;
+  if (phone) text += `*Phone:* ${phone}
+`;
+  if (subject) text += `*Subject:* ${subject}
+`;
+  text += `*Message:* ${message}`;
+
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+  window.open(whatsappUrl, '_blank');
+  
+  submitBtn.textContent = 'Redirecting to WhatsApp...';
+  submitBtn.style.background = '#25D366'; // WhatsApp Green
+  
   setTimeout(() => {
-    submitBtn.textContent = '✓ Message Sent!';
-    submitBtn.style.background = 'linear-gradient(135deg, #2ecc71, #27ae60)';
-    submitBtn.style.boxShadow = '0 4px 20px rgba(46,204,113,0.4)';
+    submitBtn.textContent = 'Send Message';
+    submitBtn.style.background = '';
     form.reset();
-
-    setTimeout(() => {
-      submitBtn.textContent = 'Send Message';
-      submitBtn.disabled = false;
-      submitBtn.style.background = '';
-      submitBtn.style.boxShadow = '';
-    }, 3000);
-  }, 1200);
+  }, 3000);
 });
 
 // ─── SWATCH HOVER TOOLTIP ───
