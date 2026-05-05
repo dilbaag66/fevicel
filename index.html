@@ -13,15 +13,9 @@
   <!-- ─── NAVBAR ─── -->
   <nav class="navbar" id="navbar">
     <div class="nav-container">
-            <div style="display: flex; align-items: center; gap: 15px;">
-        <a href="#home" class="nav-logo" style="flex-direction: column; align-items: flex-start; gap: 2px;">
-          <img src="logo.jpg" alt="FEVICEL Logo" class="nav-logo-img">
-        </a>
-        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-          <img src="isi-mark.jpg" alt="ISI Mark" style="height: 32px; width: auto; object-fit: contain; mix-blend-mode: multiply;">
-          <span style="font-size: 0.6rem; color: var(--text-dark, #333); font-weight: 700; font-family: 'Inter', sans-serif; white-space: nowrap;">ISI 15476:2019</span>
-        </div>
-      </div>
+            <a href="#home" class="nav-logo" style="flex-direction: column; align-items: flex-start; gap: 2px;">
+        <img src="logo.jpg" alt="FEVICEL Logo" class="nav-logo-img">
+      </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="#products">Products</a></li>
         <li><a href="#about">About</a></li>
@@ -37,6 +31,10 @@
 
   <!-- ─── HERO ─── -->
   <section class="hero" id="home">
+    <div style="position: absolute; top: 100px; left: max(5%, 20px); z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(0,0,0,0.3); padding: 8px; border-radius: 8px; backdrop-filter: blur(4px);">
+      <img src="isi-mark.jpg" alt="ISI Mark" style="height: 48px; width: auto; object-fit: contain; filter: invert(1) brightness(2);">
+      <span style="font-size: 0.75rem; color: #ffffff; font-weight: 700; font-family: 'Inter', sans-serif; white-space: nowrap; margin-top: 4px; letter-spacing: 0.05em;">ISI 15476:2019</span>
+    </div>
     <div class="hero-bg-overlay"></div>
     <img src="hero_bg_v5.jpg" alt="Luxury tiled surface" class="hero-bg-img">
     <div class="hero-content">
